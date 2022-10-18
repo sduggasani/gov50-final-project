@@ -1,6 +1,6 @@
 ---
 title: "Gov 50 Final Project"
-author: "Your Name Here"
+author: "Sammy Duggasani"
 description: "My final project"
 output:
   distill::distill_article:
@@ -11,4 +11,16 @@ output:
 
 ## Project thoughts
 
-I am interested in exploring data related to...
+I am interested in exploring data related to diets in India as they vary across region and how they compare against Hindu nationalist laws banning the consumption of beef. Other covariates I want to explore are literacy rates as they vary across states, how prevalent the BJP is in state-level politics, and the regions over which the British Raj directly ruled versus indirectly ruled. I have observed some maps that show an interesting correlation of certain regions with higher literacy, lenient beef consumption laws, rice-based diets (instead of wheat), and indirect British rule. I have attached some links below. 
+
+https://www.google.com/search?q=literacy+rates+india&source=lnms&tbm=isch&sa=X&ved=2ahUKEwij3YmFour6AhVKE1kFHXbPB6UQ_AUoAnoECAEQBA&biw=1440&bih=721&dpr=2#imgrc=4l1kPV8CGaLBwM
+
+https://watermark-silverchair-com.ezp-prod1.hul.harvard.edu/rest_a_00023.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAAr0wggK5BgkqhkiG9w0BBwagggKqMIICpgIBADCCAp8GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMruG-u0C3YsfEj21FAgEQgIICcCHhPt_0t1XTZ7ywW1BSyxid0BGpa7rmXzOEbfgFepmD2fihv0WkByLNElLTJ-21nyGmZXb7RMEN79pISOKkFIGjsFth874iwXOPP_khcNdQTWNqwsEmFUn3-oVEtssPvBPIpfhO3FBHqMwDmSc8AzgVj7EiHiK93nsYhW50GEzdHKk79d3yUlvf7LHOHNR0zUcdwbJo8az6Qftg6kzeRru-S9MGn1BI73bME0jGDdOsIKbY7Hc3MdZzX3VmlrbolhRqM-rAVEzL_eZBFP-cjwA9gB8xJy6IHFkUlmxiLKIUObn0rrE7YhIGqjq1vA9HpVNtX9JEfaV_EZIGk_tBvq7BM8miWFOw73geHtFSeSZID0GfieembFSxdAFCYHCOovMXkiBVWZs-N47wrqiRHhnbW3mUsXiADnLKLUxI0Hz2o36wdzuqghIcVwWTA4EDJhomUE0Kk9kp1lXWZJ13pjj1r0cqzwGI8LdrtOpzoJwjTj6mAw2VtQM-OuzxBC2Msqb_L0b8Mzw8TLv7rBpW8hJt0hCnYbLCAfOIJRIGyN6JEQrXuBCk8jZCvdrmlLrC6jvXb-CuIEpvnG_t6q_YsU4nKgtI6mtc7daEVRlB-UjnYbIDOhnCAAhmx3ZuaD9bmYz6CGIzoVeqhO_Dp3nxAknXVYXWxfpQP3YznwlvRWo9HT3defeYDAhjUtLIOnwO_7l4XzdZz3H2Dp1oez8XWnOWq3Pq15lJGdV_qu1H5YfaPymBRmw8F76NMrYKMNGkP9L3Ob6NrLsILIxvLef8niaEBsYad6owAoHJuo_yrJI87SgNIPMt7Pxa30rUKixFBQ
+
+https://www.google.com/search?q=literacy+rates+india&source=lnms&tbm=isch&sa=X&ved=2ahUKEwij3YmFour6AhVKE1kFHXbPB6UQ_AUoAnoECAEQBA&biw=1440&bih=721&dpr=2#imgrc=4l1kPV8CGaLBwM
+
+https://www.google.com/search?q=wheat+vs+rice+map+india&source=lnms&tbm=isch&sa=X&ved=2ahUKEwil3Kf4oer6AhXRM1kFHVc3Bx0Q_AUoAXoECAEQAw&biw=1440&bih=721&dpr=2#imgrc=CAboylRy4_FWTM
+
+https://www.google.com/search?q=legality+of+cow+slaughter+india&tbm=isch&ved=2ahUKEwiB9oXnoer6AhUGM1kFHXHhAWcQ2-cCegQIABAA&oq=legality+of+cow+slaughter+india&gs_lcp=CgNpbWcQA1C3AliyBWC-BmgAcAB4AIABPogBlwKSAQE1mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=E91OY8GgOYbm5NoP8cKHuAY&bih=721&biw=1440&hl=en#imgrc=1w5mzv3E2weWAM
+
+
