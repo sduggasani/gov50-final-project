@@ -6,12 +6,9 @@ output:
   distill::distill_article:
     self_contained: false
 ---
-
-
-
 ## Project thoughts
 
-I am interested in exploring data related to diets in India as they vary across region and how they compare against Hindu nationalist laws banning the consumption of beef. Other covariates I want to explore are literacy rates as they vary across states, how prevalent the BJP is in state-level politics, and the regions over which the British Raj directly ruled versus indirectly ruled. I have observed some maps that show an interesting correlation of certain regions with higher literacy, lenient beef consumption laws, rice-based diets (instead of wheat), and indirect British rule. I have attached some links below. 
+I am interested in exploring data related to diets in India as they vary across region and how they compare against Hindu nationalist laws banning the consumption of beef. Other covariates I want to explore are literacy rates as they vary across states, how prevalent the BJP is in state-level politics, and the regions over which the British Raj directly ruled versus indirectly ruled. I have observed some maps that show an interesting correlation of certain regions with higher literacy, lenient beef consumption laws, rice-based diets (instead of wheat), and indirect British rule. I have attached some links below: 
 
 https://www.google.com/search?q=literacy+rates+india&source=lnms&tbm=isch&sa=X&ved=2ahUKEwij3YmFour6AhVKE1kFHXbPB6UQ_AUoAnoECAEQBA&biw=1440&bih=721&dpr=2#imgrc=4l1kPV8CGaLBwM
 
