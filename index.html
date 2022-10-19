@@ -93,7 +93,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <meta property="description" itemprop="description" content="My final project"/>
 
 
-  <meta name="article:author" content="Your Name Here"/>
+  <meta name="article:author" content="Sammy Duggasani"/>
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
   <meta property="og:title" content="Gov 50 Final Project"/>
@@ -110,12 +110,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Gov 50 Final Project"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Your Name Here"]}]}]},{"type":"character","attributes":{},"value":["My final project"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","author","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Gov 50 Final Project"]},{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name"]}},"value":[{"type":"character","attributes":{},"value":["Sammy Duggasani"]}]}]},{"type":"character","attributes":{},"value":["My final project"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[false]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.17/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
+  {"type":"character","attributes":{},"value":["index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/header-attrs-2.16/header-attrs.js","index_files/header-attrs-2.17/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -186,6 +186,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
+    font-size: 100%;
   }
 
   .html-widget {
@@ -1258,15 +1259,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
-          var fn = $(this).children()[0]
+        const citeChild = $(this).children()[0]
+        // Do not process if @xyz has been used without escaping and without bibliography activated
+        // https://github.com/rstudio/distill/issues/466
+        if (citeChild === undefined) return true
+
+        if (citeChild.nodeName == "D-FOOTNOTE") {
+          var fn = citeChild
           $(this).html(fn.shadowRoot.querySelector("sup"))
           $(this).id = fn.id
           fn.remove()
         }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
-          return "<p>" + $('#ref-' + ref).html() + "</p>";
+          // Could use CSS.escape too here, we insure backward compatibility in navigator
+          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
         }).join("\n");
         window.tippy(this, {
           allowHTML: true,
@@ -1465,7 +1472,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="index_files/header-attrs-2.17/header-attrs.js"></script>
+  <script src="index_files/header-attrs-2.16/header-attrs.js"></script>
   <script src="index_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="index_files/popper-2.6.0/popper.min.js"></script>
   <link href="index_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
@@ -1486,7 +1493,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Gov 50 Final Project","description":"My final project","authors":[{"author":"Your Name Here","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}]}
+{"title":"Gov 50 Final Project","description":"My final project","authors":[{"author":"Sammy Duggasani","authorURL":"#","affiliation":"&nbsp;","affiliationURL":"#","orcidID":""}]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1504,16 +1511,20 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <div class="d-byline">
   
-  Your Name Here
+  Sammy Duggasani
   
 
 </div>
 
 <div class="d-article">
 <h2 id="project-thoughts">Project thoughts</h2>
-<p>I am interested in exploring data related to…</p>
-<div class="sourceCode" id="cb1"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>I am interested in exploring data related to diets in India as they vary across region and how they compare against Hindu nationalist laws banning the consumption of beef. Other covariates I want to explore are literacy rates as they vary across states, how prevalent the BJP is in state-level politics, and the regions over which the British Raj directly ruled versus indirectly ruled. I have observed some maps that show an interesting correlation of certain regions with higher literacy, lenient beef consumption laws, rice-based diets (instead of wheat), and indirect British rule. I have attached some links below:</p>
+<p><a href="https://www.google.com/search?q=literacy+rates+india&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=2ahUKEwij3YmFour6AhVKE1kFHXbPB6UQ_AUoAnoECAEQBA&amp;biw=1440&amp;bih=721&amp;dpr=2#imgrc=4l1kPV8CGaLBwM" class="uri">https://www.google.com/search?q=literacy+rates+india&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=2ahUKEwij3YmFour6AhVKE1kFHXbPB6UQ_AUoAnoECAEQBA&amp;biw=1440&amp;bih=721&amp;dpr=2#imgrc=4l1kPV8CGaLBwM</a></p>
+<p><a href="https://watermark-silverchair-com.ezp-prod1.hul.harvard.edu/rest_a_00023.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAAr0wggK5BgkqhkiG9w0BBwagggKqMIICpgIBADCCAp8GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMruG-u0C3YsfEj21FAgEQgIICcCHhPt_0t1XTZ7ywW1BSyxid0BGpa7rmXzOEbfgFepmD2fihv0WkByLNElLTJ-21nyGmZXb7RMEN79pISOKkFIGjsFth874iwXOPP_khcNdQTWNqwsEmFUn3-oVEtssPvBPIpfhO3FBHqMwDmSc8AzgVj7EiHiK93nsYhW50GEzdHKk79d3yUlvf7LHOHNR0zUcdwbJo8az6Qftg6kzeRru-S9MGn1BI73bME0jGDdOsIKbY7Hc3MdZzX3VmlrbolhRqM-rAVEzL_eZBFP-cjwA9gB8xJy6IHFkUlmxiLKIUObn0rrE7YhIGqjq1vA9HpVNtX9JEfaV_EZIGk_tBvq7BM8miWFOw73geHtFSeSZID0GfieembFSxdAFCYHCOovMXkiBVWZs-N47wrqiRHhnbW3mUsXiADnLKLUxI0Hz2o36wdzuqghIcVwWTA4EDJhomUE0Kk9kp1lXWZJ13pjj1r0cqzwGI8LdrtOpzoJwjTj6mAw2VtQM-OuzxBC2Msqb_L0b8Mzw8TLv7rBpW8hJt0hCnYbLCAfOIJRIGyN6JEQrXuBCk8jZCvdrmlLrC6jvXb-CuIEpvnG_t6q_YsU4nKgtI6mtc7daEVRlB-UjnYbIDOhnCAAhmx3ZuaD9bmYz6CGIzoVeqhO_Dp3nxAknXVYXWxfpQP3YznwlvRWo9HT3defeYDAhjUtLIOnwO_7l4XzdZz3H2Dp1oez8XWnOWq3Pq15lJGdV_qu1H5YfaPymBRmw8F76NMrYKMNGkP9L3Ob6NrLsILIxvLef8niaEBsYad6owAoHJuo_yrJI87SgNIPMt7Pxa30rUKixFBQ" class="uri">https://watermark-silverchair-com.ezp-prod1.hul.harvard.edu/rest_a_00023.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAAr0wggK5BgkqhkiG9w0BBwagggKqMIICpgIBADCCAp8GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMruG-u0C3YsfEj21FAgEQgIICcCHhPt_0t1XTZ7ywW1BSyxid0BGpa7rmXzOEbfgFepmD2fihv0WkByLNElLTJ-21nyGmZXb7RMEN79pISOKkFIGjsFth874iwXOPP_khcNdQTWNqwsEmFUn3-oVEtssPvBPIpfhO3FBHqMwDmSc8AzgVj7EiHiK93nsYhW50GEzdHKk79d3yUlvf7LHOHNR0zUcdwbJo8az6Qftg6kzeRru-S9MGn1BI73bME0jGDdOsIKbY7Hc3MdZzX3VmlrbolhRqM-rAVEzL_eZBFP-cjwA9gB8xJy6IHFkUlmxiLKIUObn0rrE7YhIGqjq1vA9HpVNtX9JEfaV_EZIGk_tBvq7BM8miWFOw73geHtFSeSZID0GfieembFSxdAFCYHCOovMXkiBVWZs-N47wrqiRHhnbW3mUsXiADnLKLUxI0Hz2o36wdzuqghIcVwWTA4EDJhomUE0Kk9kp1lXWZJ13pjj1r0cqzwGI8LdrtOpzoJwjTj6mAw2VtQM-OuzxBC2Msqb_L0b8Mzw8TLv7rBpW8hJt0hCnYbLCAfOIJRIGyN6JEQrXuBCk8jZCvdrmlLrC6jvXb-CuIEpvnG_t6q_YsU4nKgtI6mtc7daEVRlB-UjnYbIDOhnCAAhmx3ZuaD9bmYz6CGIzoVeqhO_Dp3nxAknXVYXWxfpQP3YznwlvRWo9HT3defeYDAhjUtLIOnwO_7l4XzdZz3H2Dp1oez8XWnOWq3Pq15lJGdV_qu1H5YfaPymBRmw8F76NMrYKMNGkP9L3Ob6NrLsILIxvLef8niaEBsYad6owAoHJuo_yrJI87SgNIPMt7Pxa30rUKixFBQ</a></p>
+<p><a href="https://www.google.com/search?q=literacy+rates+india&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=2ahUKEwij3YmFour6AhVKE1kFHXbPB6UQ_AUoAnoECAEQBA&amp;biw=1440&amp;bih=721&amp;dpr=2#imgrc=4l1kPV8CGaLBwM" class="uri">https://www.google.com/search?q=literacy+rates+india&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=2ahUKEwij3YmFour6AhVKE1kFHXbPB6UQ_AUoAnoECAEQBA&amp;biw=1440&amp;bih=721&amp;dpr=2#imgrc=4l1kPV8CGaLBwM</a></p>
+<p><a href="https://www.google.com/search?q=wheat+vs+rice+map+india&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=2ahUKEwil3Kf4oer6AhXRM1kFHVc3Bx0Q_AUoAXoECAEQAw&amp;biw=1440&amp;bih=721&amp;dpr=2#imgrc=CAboylRy4_FWTM" class="uri">https://www.google.com/search?q=wheat+vs+rice+map+india&amp;source=lnms&amp;tbm=isch&amp;sa=X&amp;ved=2ahUKEwil3Kf4oer6AhXRM1kFHVc3Bx0Q_AUoAXoECAEQAw&amp;biw=1440&amp;bih=721&amp;dpr=2#imgrc=CAboylRy4_FWTM</a></p>
+<p><a href="https://www.google.com/search?q=legality+of+cow+slaughter+india&amp;tbm=isch&amp;ved=2ahUKEwiB9oXnoer6AhUGM1kFHXHhAWcQ2-cCegQIABAA&amp;oq=legality+of+cow+slaughter+india&amp;gs_lcp=CgNpbWcQA1C3AliyBWC-BmgAcAB4AIABPogBlwKSAQE1mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&amp;sclient=img&amp;ei=E91OY8GgOYbm5NoP8cKHuAY&amp;bih=721&amp;biw=1440&amp;hl=en#imgrc=1w5mzv3E2weWAM" class="uri">https://www.google.com/search?q=legality+of+cow+slaughter+india&amp;tbm=isch&amp;ved=2ahUKEwiB9oXnoer6AhUGM1kFHXHhAWcQ2-cCegQIABAA&amp;oq=legality+of+cow+slaughter+india&amp;gs_lcp=CgNpbWcQA1C3AliyBWC-BmgAcAB4AIABPogBlwKSAQE1mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&amp;sclient=img&amp;ei=E91OY8GgOYbm5NoP8cKHuAY&amp;bih=721&amp;biw=1440&amp;hl=en#imgrc=1w5mzv3E2weWAM</a></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>
