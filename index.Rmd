@@ -20,3 +20,21 @@ I am interested in exploring data related to diets in India as they vary across 
 <https://www.google.com/search?q=wheat+vs+rice+map+india&source=lnms&tbm=isch&sa=X&ved=2ahUKEwil3Kf4oer6AhXRM1kFHVc3Bx0Q_AUoAXoECAEQAw&biw=1440&bih=721&dpr=2#imgrc=CAboylRy4_FWTM>
 
 <https://www.google.com/search?q=legality+of+cow+slaughter+india&tbm=isch&ved=2ahUKEwiB9oXnoer6AhUGM1kFHXHhAWcQ2-cCegQIABAA&oq=legality+of+cow+slaughter+india&gs_lcp=CgNpbWcQA1C3AliyBWC-BmgAcAB4AIABPogBlwKSAQE1mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=E91OY8GgOYbm5NoP8cKHuAY&bih=721&biw=1440&hl=en#imgrc=1w5mzv3E2weWAM>
+
+```{r}
+library(haven)
+library(readr)
+library(tidyverse)
+
+india_data_sav <- read_sav("india_religion_public_data.sav")
+getwd()
+write_csv(x=india_data_sav, file="india_data.csv")
+india_data <- read_csv("india_data.csv")
+glimpse(india_data)
+```
+
+## Proposal
+
+https://www.pewresearch.org/religion/2021/06/29/religious-freedom-discrimination-and-communal-relations/
+
+How do views on beef consumption relate to religious nationalism in India? Do strict views on beef consumption increase religious segregation in India? In this study, I plan to examine the extent to which religious nationalism in India is correlated with desires for religious segregation among various religious groups and regions. I hypothesize that intense views on beef consumption are strongly correlated with religiously nationalistic views and, as a result, the desire for religious segregation. With the rise of the Bharatiya Janata Party in India, views on beef consumption have been obvservably more radical as well as a rise in interreligious violence. My sample is comprised of respondents of the Pew Research Center administered survey, which drew from all regions, castes, religions, genders, and socioeconomic classes, but survey coverage is calculated to be 98% of the Indian population. My unit of analysis is an individual and their survey responses as well as their demographics. My explanatory variable is a Hindu’s view on beef consumption (favorable or unfavorable) and their attitude toward the BJP (favorable or unfavorable). My outcome variable is if a Hindu is to accept a non-Hindu as their neighbor (willing or unwilling). These variables are measured from Pew Research Center’s 2019-2020 survey among adults in India. A positive correlation between beef consumption and views on religious segregation would prove my hypothesis. A negative correlation between beef consumption and views on religious segregation would disprove my hypothesis. I would also need to involve attitudes toward the BJP in my analysis, and I could do that by stratifying/organizing data by BJP affiliation. When I run my regression of the views on religious segregation on the beef consumption variable, a positive, significant coefficient would indicate support for my hypothesis.
