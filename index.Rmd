@@ -38,3 +38,20 @@ glimpse(india_data)
 https://www.pewresearch.org/religion/2021/06/29/religious-freedom-discrimination-and-communal-relations/
 
 How do views on beef consumption relate to religious nationalism in India? Do strict views on beef consumption increase religious segregation in India? In this study, I plan to examine the extent to which religious nationalism in India is correlated with desires for religious segregation among various religious groups and regions. I hypothesize that intense views on beef consumption are strongly correlated with religiously nationalistic views and, as a result, the desire for religious segregation. With the rise of the Bharatiya Janata Party in India, views on beef consumption have been obvservably more radical as well as a rise in interreligious violence. My sample is comprised of respondents of the Pew Research Center administered survey, which drew from all regions, castes, religions, genders, and socioeconomic classes, but survey coverage is calculated to be 98% of the Indian population. My unit of analysis is an individual and their survey responses as well as their demographics. My explanatory variable is a Hindu’s view on beef consumption (favorable or unfavorable) and their attitude toward the BJP (favorable or unfavorable). My outcome variable is if a Hindu is to accept a non-Hindu as their neighbor (willing or unwilling). These variables are measured from Pew Research Center’s 2019-2020 survey among adults in India. A positive correlation between beef consumption and views on religious segregation would prove my hypothesis. A negative correlation between beef consumption and views on religious segregation would disprove my hypothesis. I would also need to involve attitudes toward the BJP in my analysis, and I could do that by stratifying/organizing data by BJP affiliation. When I run my regression of the views on religious segregation on the beef consumption variable, a positive, significant coefficient would indicate support for my hypothesis.
+
+
+```{r milestone_3_visualization}
+library(ggplot2)
+library(tidyverse)
+
+religion_imp_dist <- india_data |>
+  filter(Q35!=98 & Q35!=99) |>
+  ggplot(aes(x = Q35)) +
+  geom_bar() +
+  labs(title = "Distribution of the Importance of Religion",
+       x = "Importance of Religion",
+       y = "Count") 
+ 
+religion_imp_dist
+```
+
