@@ -54,4 +54,22 @@ religion_imp_dist <- india_data |>
  
 religion_imp_dist
 ```
+```{r}
+india_data$Q77arec  <- as.factor(india_data$Q77arec)
+india_data <- india_data |>
+  mutate()
 
+voting_party <- india_data |>
+  filter(Q77arec!=994 & Q77arec!=995 & Q77arec!=996 & Q77arec!=997 & Q77arec!=998 & Q77arec!=999) |>
+  ggplot(aes(x = Q77arec)) +
+  geom_bar() + 
+  scale_x_discrete(labels = c('BJP','Congress','Other')) + 
+  labs(title = "Distribution of Votes by Party",
+       x = "Party",
+       y = "Count") 
+ 
+voting_party
+
+
+```
+This visualization demonstrates that the BJP has solidified itself as the dominating party in Indian politics. By itself, the BJP has the majority of votes; that is to say, it has more than all other parties combined. This accomplishes the first step of my research question. I had to first establish that the BJP actually does have a hold on Indian politics currently. To understand that Hindu nationalism has been a popular ideology in India is to conceptualize the political domination that the BJP is able to exert. It is beyond the scope of this analysis to establish the link between the BJP and Hindutva (Hindu nationalism) ideologically, but I will rely on other sources to do so. 
