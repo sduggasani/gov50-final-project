@@ -54,7 +54,7 @@ religion_imp_dist <- india_data |>
  
 religion_imp_dist
 ```
-```{r}
+```{r milestone_4}
 india_data$Q77arec  <- as.factor(india_data$Q77arec)
 india_data <- india_data |>
   mutate()

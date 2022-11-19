@@ -115,7 +115,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["from_sav_data.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/milestone_3_visualization-1.png","index_files/header-attrs-2.16/header-attrs.js","index_files/header-attrs-2.17/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","india_data.csv","india_religion_public_data.sav"]}
+  {"type":"character","attributes":{},"value":["from_sav_data.csv","index_files/anchor-4.2.2/anchor.min.js","index_files/bowser-1.9.3/bowser.min.js","index_files/distill-2.2.21/template.v2.js","index_files/figure-html5/milestone_3_visualization-1.png","index_files/figure-html5/milestone_4-1.png","index_files/header-attrs-2.16/header-attrs.js","index_files/header-attrs-2.17/header-attrs.js","index_files/jquery-3.6.0/jquery-3.6.0.js","index_files/jquery-3.6.0/jquery-3.6.0.min.js","index_files/jquery-3.6.0/jquery-3.6.0.min.map","index_files/popper-2.6.0/popper.min.js","index_files/tippy-6.2.7/tippy-bundle.umd.min.js","index_files/tippy-6.2.7/tippy-light-border.css","index_files/tippy-6.2.7/tippy.css","index_files/tippy-6.2.7/tippy.umd.min.js","index_files/webcomponents-2.0.0/webcomponents.js","india_data.csv","india_religion_public_data.sav"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1870,6 +1870,26 @@ $ Urban        &lt;dbl&gt; 2, 2, 2, 1, 1, 2, 2, 1, 1, 1, 2, 2, 1, 1, 1, 2,…</c
 </div>
 <p><img src="index_files/figure-html5/milestone_3_visualization-1.png" width="624" /></p>
 </div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>india_data</span><span class='op'>$</span><span class='va'>Q77arec</span>  <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>as.factor</a></span><span class='op'>(</span><span class='va'>india_data</span><span class='op'>$</span><span class='va'>Q77arec</span><span class='op'>)</span></span>
+<span><span class='va'>india_data</span> <span class='op'>&lt;-</span> <span class='va'>india_data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>voting_party</span> <span class='op'>&lt;-</span> <span class='va'>india_data</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Q77arec</span><span class='op'>!=</span><span class='fl'>994</span> <span class='op'>&amp;</span> <span class='va'>Q77arec</span><span class='op'>!=</span><span class='fl'>995</span> <span class='op'>&amp;</span> <span class='va'>Q77arec</span><span class='op'>!=</span><span class='fl'>996</span> <span class='op'>&amp;</span> <span class='va'>Q77arec</span><span class='op'>!=</span><span class='fl'>997</span> <span class='op'>&amp;</span> <span class='va'>Q77arec</span><span class='op'>!=</span><span class='fl'>998</span> <span class='op'>&amp;</span> <span class='va'>Q77arec</span><span class='op'>!=</span><span class='fl'>999</span><span class='op'>)</span> <span class='op'>|&gt;</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Q77arec</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/scale_discrete.html'>scale_x_discrete</a></span><span class='op'>(</span>labels <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'BJP'</span>,<span class='st'>'Congress'</span>,<span class='st'>'Other'</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> </span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>title <span class='op'>=</span> <span class='st'>"Distribution of Votes by Party"</span>,</span>
+<span>       x <span class='op'>=</span> <span class='st'>"Party"</span>,</span>
+<span>       y <span class='op'>=</span> <span class='st'>"Count"</span><span class='op'>)</span> </span>
+<span> </span>
+<span><span class='va'>voting_party</span></span></code></pre>
+</div>
+<p><img src="index_files/figure-html5/milestone_4-1.png" width="624" /></p>
+</div>
+<p>This visualization demonstrates that the BJP has solidified itself as the dominating party in Indian politics. By itself, the BJP has the majority of votes; that is to say, it has more than all other parties combined. This accomplishes the first step of my research question. I had to first establish that the BJP actually does have a hold on Indian politics currently. To understand that Hindu nationalism has been a popular ideology in India is to conceptualize the political domination that the BJP is able to exert. It is beyond the scope of this analysis to establish the link between the BJP and Hindutva (Hindu nationalism) ideologically, but I will rely on other sources to do so.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
