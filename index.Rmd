@@ -1,75 +1,201 @@
 ---
-title: "Gov 50 Final Project"
+title: "Money Talks: Investigating the Relationship between Campaign Spending and Vote Share in U.S. House Elections"
 author: "Sammy Duggasani"
-description: "My final project"
+description: "Gov50 Final Project"
 output:
   distill::distill_article:
     self_contained: false
 ---
 
-## Project thoughts
-
-I am interested in exploring data related to diets in India as they vary across region and how they compare against Hindu nationalist laws banning the consumption of beef. Other covariates I want to explore are literacy rates as they vary across states, how prevalent the BJP is in state-level politics, and the regions over which the British Raj directly ruled versus indirectly ruled. I have observed some maps that show an interesting correlation of certain regions with higher literacy, lenient beef consumption laws, rice-based diets (instead of wheat), and indirect British rule. I have attached some links below:
-
-<https://www.google.com/search?q=literacy+rates+india&source=lnms&tbm=isch&sa=X&ved=2ahUKEwij3YmFour6AhVKE1kFHXbPB6UQ_AUoAnoECAEQBA&biw=1440&bih=721&dpr=2#imgrc=4l1kPV8CGaLBwM>
-
-<https://watermark-silverchair-com.ezp-prod1.hul.harvard.edu/rest_a_00023.pdf?token=AQECAHi208BE49Ooan9kkhW_Ercy7Dm3ZL_9Cf3qfKAc485ysgAAAr0wggK5BgkqhkiG9w0BBwagggKqMIICpgIBADCCAp8GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQMruG-u0C3YsfEj21FAgEQgIICcCHhPt_0t1XTZ7ywW1BSyxid0BGpa7rmXzOEbfgFepmD2fihv0WkByLNElLTJ-21nyGmZXb7RMEN79pISOKkFIGjsFth874iwXOPP_khcNdQTWNqwsEmFUn3-oVEtssPvBPIpfhO3FBHqMwDmSc8AzgVj7EiHiK93nsYhW50GEzdHKk79d3yUlvf7LHOHNR0zUcdwbJo8az6Qftg6kzeRru-S9MGn1BI73bME0jGDdOsIKbY7Hc3MdZzX3VmlrbolhRqM-rAVEzL_eZBFP-cjwA9gB8xJy6IHFkUlmxiLKIUObn0rrE7YhIGqjq1vA9HpVNtX9JEfaV_EZIGk_tBvq7BM8miWFOw73geHtFSeSZID0GfieembFSxdAFCYHCOovMXkiBVWZs-N47wrqiRHhnbW3mUsXiADnLKLUxI0Hz2o36wdzuqghIcVwWTA4EDJhomUE0Kk9kp1lXWZJ13pjj1r0cqzwGI8LdrtOpzoJwjTj6mAw2VtQM-OuzxBC2Msqb_L0b8Mzw8TLv7rBpW8hJt0hCnYbLCAfOIJRIGyN6JEQrXuBCk8jZCvdrmlLrC6jvXb-CuIEpvnG_t6q_YsU4nKgtI6mtc7daEVRlB-UjnYbIDOhnCAAhmx3ZuaD9bmYz6CGIzoVeqhO_Dp3nxAknXVYXWxfpQP3YznwlvRWo9HT3defeYDAhjUtLIOnwO_7l4XzdZz3H2Dp1oez8XWnOWq3Pq15lJGdV_qu1H5YfaPymBRmw8F76NMrYKMNGkP9L3Ob6NrLsILIxvLef8niaEBsYad6owAoHJuo_yrJI87SgNIPMt7Pxa30rUKixFBQ>
-
-<https://www.google.com/search?q=literacy+rates+india&source=lnms&tbm=isch&sa=X&ved=2ahUKEwij3YmFour6AhVKE1kFHXbPB6UQ_AUoAnoECAEQBA&biw=1440&bih=721&dpr=2#imgrc=4l1kPV8CGaLBwM>
-
-<https://www.google.com/search?q=wheat+vs+rice+map+india&source=lnms&tbm=isch&sa=X&ved=2ahUKEwil3Kf4oer6AhXRM1kFHVc3Bx0Q_AUoAXoECAEQAw&biw=1440&bih=721&dpr=2#imgrc=CAboylRy4_FWTM>
-
-<https://www.google.com/search?q=legality+of+cow+slaughter+india&tbm=isch&ved=2ahUKEwiB9oXnoer6AhUGM1kFHXHhAWcQ2-cCegQIABAA&oq=legality+of+cow+slaughter+india&gs_lcp=CgNpbWcQA1C3AliyBWC-BmgAcAB4AIABPogBlwKSAQE1mAEAoAEBqgELZ3dzLXdpei1pbWfAAQE&sclient=img&ei=E91OY8GgOYbm5NoP8cKHuAY&bih=721&biw=1440&hl=en#imgrc=1w5mzv3E2weWAM>
-
-```{r}
-library(haven)
-library(readr)
-library(tidyverse)
-
-india_data_sav <- read_sav("india_religion_public_data.sav")
-getwd()
-write_csv(x=india_data_sav, file="india_data.csv")
-india_data <- read_csv("india_data.csv")
-glimpse(india_data)
-```
-
-## Proposal
-
-https://www.pewresearch.org/religion/2021/06/29/religious-freedom-discrimination-and-communal-relations/
-
-How do views on beef consumption relate to religious nationalism in India? Do strict views on beef consumption increase religious segregation in India? In this study, I plan to examine the extent to which religious nationalism in India is correlated with desires for religious segregation among various religious groups and regions. I hypothesize that intense views on beef consumption are strongly correlated with religiously nationalistic views and, as a result, the desire for religious segregation. With the rise of the Bharatiya Janata Party in India, views on beef consumption have been obvservably more radical as well as a rise in interreligious violence. My sample is comprised of respondents of the Pew Research Center administered survey, which drew from all regions, castes, religions, genders, and socioeconomic classes, but survey coverage is calculated to be 98% of the Indian population. My unit of analysis is an individual and their survey responses as well as their demographics. My explanatory variable is a Hindu’s view on beef consumption (favorable or unfavorable) and their attitude toward the BJP (favorable or unfavorable). My outcome variable is if a Hindu is to accept a non-Hindu as their neighbor (willing or unwilling). These variables are measured from Pew Research Center’s 2019-2020 survey among adults in India. A positive correlation between beef consumption and views on religious segregation would prove my hypothesis. A negative correlation between beef consumption and views on religious segregation would disprove my hypothesis. I would also need to involve attitudes toward the BJP in my analysis, and I could do that by stratifying/organizing data by BJP affiliation. When I run my regression of the views on religious segregation on the beef consumption variable, a positive, significant coefficient would indicate support for my hypothesis.
-
-
-```{r milestone_3_visualization}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
 library(ggplot2)
 library(tidyverse)
-
-religion_imp_dist <- india_data |>
-  filter(Q35!=98 & Q35!=99) |>
-  ggplot(aes(x = Q35)) +
-  geom_bar() +
-  labs(title = "Distribution of the Importance of Religion",
-       x = "Importance of Religion",
-       y = "Count") 
- 
-religion_imp_dist
+library(infer)
 ```
-```{r milestone_4}
-india_data$Q77arec  <- as.factor(india_data$Q77arec)
-india_data <- india_data |>
-  mutate()
 
-voting_party <- india_data |>
-  filter(Q77arec!=994 & Q77arec!=995 & Q77arec!=996 & Q77arec!=997 & Q77arec!=998 & Q77arec!=999) |>
-  ggplot(aes(x = Q77arec)) +
-  geom_bar() + 
-  scale_x_discrete(labels = c('BJP','Congress','Other')) + 
-  labs(title = "Distribution of Votes by Party",
-       x = "Party",
-       y = "Count") 
- 
-voting_party
-
-
+```{r load_clean_data}
+# Loading Bonica's dataset
+dime <- read_csv("dime_recipients_scale.csv")
+# Narrowing data to be House candidates from 2010-2014, Filtering out NA and unknown vote shares, making a numeric vote share variable
+dime_house_1014 <- dime |>
+  filter(fecyear >= 2010 & fecyear <=2014) |>
+  filter(seat == "federal:house") |>
+  filter(!is.na(gen.elect.pct)) |>
+  filter(gen.elect.pct != "??") |>
+  mutate(gen.elect.pct.num = as.numeric(gen.elect.pct)) 
+# Create unique ID for each election 
+dime_house_1014 <- dime_house_1014 |>
+  mutate(elec_id = paste0(election, district))
+# Select only relevant variables for dataset
+dime_house_1014 <- dime_house_1014 |>
+  select(elec_id, name, seat, party, state, district, Incum.Chall, total.disbursements, winner, gen.elect.pct.num)
+glimpse(dime_house_1014)
+# Create new dataset with total disbursements for each election (across all candidates)
+dime_house_elec_total <- dime_house_1014 |>
+  group_by(elec_id) |>
+  summarize(total_elec_disb = sum(total.disbursements),
+            .groups = 'drop')
+# Merge new dataset with previous to add total election disbursements as a column
+dime_house_1014 <- inner_join(dime_house_1014, dime_house_elec_total)
+# Create percentage disbursement share for each candidate
+dime_house_1014 <- dime_house_1014 |>
+  mutate(disbursement_pct_num = (total.disbursements/total_elec_disb)*100)
+# Convert numeric into factor for party variable
+dime_house_1014 <- dime_house_1014 |>
+  mutate(party = case_when(party == 100 ~ "Democrat",
+                           party == 200 ~ "Republican",
+                           party == 328 ~ "Independent"))
+# Rewrite incumbency status variable to be clearer
+dime_house_1014 <- dime_house_1014 |>
+  mutate(Incum.Chall = case_when(Incum.Chall == "I" ~ "Incumbent",
+                           Incum.Chall == "C" ~ "Challenger",
+                           Incum.Chall == "O" ~ "Open Seat"))
+dime_house_1014
 ```
-This visualization demonstrates that the BJP has solidified itself as the dominating party in Indian politics. By itself, the BJP has the majority of votes; that is to say, it has more than all other parties combined. This accomplishes the first step of my research question. I had to first establish that the BJP actually does have a hold on Indian politics currently. To understand that Hindu nationalism has been a popular ideology in India is to conceptualize the political domination that the BJP is able to exert. It is beyond the scope of this analysis to establish the link between the BJP and Hindutva (Hindu nationalism) ideologically, but I will rely on other sources to do so. 
+
+## Introduction
+
+The Supreme Court case Citizens United v. Federal Election Commission of 2010 was a momentous decision in campaign finance with many citing it as promoting lobbying and corporate interest in American politics. In essence, a 5-4 majority deemed that limiting independent political spending was a violation of the First Amendment's right to free speech. Rendering previous campaign finance restrictions unconstitutional and void, corporations and other outside groups could now spend unlimited funds on elections. [According to Open Secrets, the decade after Citizens United was the most expensive in the history of United States elections. Non-party independent groups spent \$4.5 billion on elections from 2010 - 2020: for the two decades prior, the total was just \$750 million.](https://www.opensecrets.org/news/reports/a-decade-under-citizens-united)
+
+Much of the current research into campaign finance focuses on how funds are spent or the sources of funds and their impact on candidates' voting records. This analysis will instead focus on the relationship between campaign spending and vote share in a particular election. **Do candidates that spend more than their competitors garner more votes? What is the correlation between a candidate's share of the total amount of spending in an election and their vote share in the general election? If there is a relationship between share of spending and vote share, what is its statistical significance? That is, does money talk?**
+
+I hypothesize that the greater a candidate's percentage share of total campaign spending, the greater their percentage vote share in the general election. The conclusion on this hypothesis could answer a number of other questions related to campaign spending and election outcomes as well. For example, if there is a positive correlation between campaign spending and election outcomes in vote share, we could determine that, on average, the highest-spending candidate is also the one with the most votes.
+
+Data is particularly useful to investigate this question because it provides measurable insight into the magnitude of the effect of money on political "winningness". If the correlation between a candidate's percentage share of total election spending and candidate's vote share is strong in either the positive or negative direction, we could get a better idea of how spending works to impact the ability of a candidate to garner votes. If there is no apparent correlation, it would be interesting to investigate why campaign donations seem to increase when there does not seem to be much of a correlation between spending and the ability to garner votes. Involving the incumbency status of candidates into the relationship between spending and vote share could provide insight into incumbents and spending trends.
+
+With the sheer amount of money that is now being funneled to U.S. elections, it is compelling --- and important --- to examine the extent to which spending is a determinant of success. The answer to this bears its own normative considerations on the role that money and corporate interest play in our democracy.
+
+## Data
+
+The data is drawn from the work of Stanford University Professor Adam Bonica. In 2016, he published Version 2.0 of the Database on Ideology, Money in Politics and Elections (DIME), which contains over 130 million political contributions to local, state, and federal elections from over the years 1979 - 2014. Bonica generated a corresponding database of the recipients of such political contributions, which include both PACs (political action committees) and individual candidates. For the sake of this analysis, the scope will be limited to the database of donation recipients that are individual candidates because they are ultimately who the money is meant to help. Bonica pulled contribution records, candidate and committee filings, and election outcomes for federal elections from the data made available by the Federal Election Commission. This dataset contains 176,777 candidates, PACs, political organizations, and party committees at the state and federal levels.
+
+While Bonica's database is more than generous, the variables on which this analysis will focus are the following:
+
+| Variable               | Description                                                                             |
+|------------------|------------------------------------------------------|
+| elec_id\*              | An identification variable used to mark each unique election based on year and district |
+| name                   | Name of candidate                                                                       |
+| party                  | Democrat, Republican, Independent                                     |
+| state                  | State in which candidate ran                                                            |
+| seat                   | Office for which candidate ran                                                          |
+| district               | District for which candidate ran                                                        |
+| Incum.Chall            | Incumbent, Challenger, Open Seat                                            |
+| total.disbursements    | Total amount of money spent on campaign by a candidate, in USD                          |
+| winner                 | W = Won race, L = Lost race                                                             |
+| gen.elect.pct.num\*    | Vote share in general election, in percentage                                           |
+| total_elec_disb\*      | Total amount of disbursements by all candidates in a given election                     |
+| disbursement_pct_num\* | A candidate's share of total disbursements in election                                  |
+
+\* variables I generated/calculated through coding Prof. Bonica's original database
+
+As mentioned previously, data is provided by the Federal Election Commission, which collects campaign finance information through its legal requirement on all campaigns to provide finance reports. The Federal Election Commission compiles election outcome data itself from all certified federal election results. I coded and calculated the independent variable of a candidate's share of total election disbursements from the original database's variable of total.disbursements for each candidate. The dependent variable of general election percentage vote share is drawn from Bonica's database (I converted it from a factor to numerical variable). The aforementioned variables are continuous and numerical. I will also involve incumbency status as a categorical independent variable to determine to what extent it is confounding in the relationship of interest.
+
+The sample narrowed the database to focus on United States House of Representatives general elections from the years of 2010-2014 to provide both simplicity and comparable variation between candidates of like offices. The unit of analysis is a House of Representatives candidate. The explanatory variable is a candidate's percentage share of total disbursements in a House election. The outcome variable is the vote share of a particular candidate in the general House election. The data was filtered to exclude candidates who did not run in a general election or candidates whose vote share was marked as "NA" or unknown in the original dataset. The resulting workable dataset includes 2,314 general election candidates for office in the United States House of Representatives from the years 2010 - 2014.
+
+The design of this study is cross-sectional. I am examining the vote share and spending share of a candidate in a singular election; in other words, we are observing a subject at a singular point in time. Evaluating candidates in a cross-sectional study is ideal here because it allows me to easily compare the impact that spending has on vote shares across subjects who are running for the same office at relatively the same point in time.
+
+```{r distribution_of_dependent}
+# Distribution of Dependent Variable - Percentage Vote Share
+dependent_distribution <- dime_house_1014 |>
+  ggplot(mapping = aes(x = Incum.Chall,
+                       y = gen.elect.pct.num,
+                       fill = Incum.Chall)) +
+  geom_boxplot(alpha = .7) +
+  scale_fill_manual("Incumbency Status", values = c("thistle", "sienna2", "goldenrod1")) +
+  labs(title = "Distribution of Vote Shares across Incumbency Statuses",
+       subtitle = "U.S. House Candidates 2010-2014",
+       x = "Incumbency Status",
+       y = "Vote Share in Election (%)")
+dependent_distribution
+```
+
+The dependent variable I am investigating throughout this analysis is percentage vote share for a given candidate. While it does not provide much useful information to evaluate its distribution alone, it could be useful to visualize vote shares within incumbency statuses. Here, we see that incumbents generally have greater vote shares than challengers (the majority of the incumbent boxplot distribution is above the challenger boxplot distribution); we also see that the majority of incumbents earn vote shares that are well above a simple majority. This helps us determine that incumbency status is a covariate because it itself may determine vote shares for a candidate.
+
+```{r distribution_of_independent_spending}
+# Distribution of Independent Variable - Percentage Spending Share
+spending_distribution <- dime_house_1014 |>
+  ggplot(mapping = aes(x = Incum.Chall,
+                       y = disbursement_pct_num,
+                       fill = Incum.Chall)) +
+  geom_boxplot(alpha = .7) +
+  scale_fill_manual("Incumbency Status", values = c("thistle", "sienna2", "goldenrod1")) +
+  labs(title = "Distribution of Disbursement Shares across Incumbency Statuses",
+       subtitle = "U.S. House Candidates 2010-2014",
+       x = "Incumbency Status",
+       y = "Share of Total Disbursements in Election (%)")
+spending_distribution
+```
+
+This distribution of a candidate's share of total disbursements in an election demonstrates that there is a heavy favoring toward incumbents over challengers in terms of spending. The boxplot distributions show that incumbents as a whole heavily outspend challengers in terms of share of total disbursements in an election. For open seats where there is not an incumbent running for reelection, the boxplot distribution is much more evenly spread across shares of spending. This is intuitive because open races would not be favored toward the incumbent and both funding and spending would, on average, be more evenly distributed among candidates (not accounting for district ideology or other covariates).
+
+## Results
+
+To visualize the relationship between the spending share of a U.S. House candidate and their vote share in the election, a scatterplot was created. Points on the scatterplot are color-coded, then faceted based on incumbency status to evaluate how that plays into the relationship.
+
+```{r main_relationship_visualization}
+# Visualize the relationship between vote share and spending share
+main_relationship_plot <- dime_house_1014 |>
+  ggplot(mapping = aes(x = disbursement_pct_num,
+                       y = gen.elect.pct.num,
+                       color = Incum.Chall)) +
+  scale_color_manual("Incumbency Status", values = c("thistle", "sienna2", "goldenrod1")) +
+  geom_point(alpha = .7) +
+  geom_smooth(se = FALSE, method = "loess", color = "black") + 
+  labs(title = "The Relationship between Spending Share and Vote Share",
+       subtitle = "U.S. House Candidates 2010-2014",
+       x = "Share of Total Disbursements in Election (%)",
+       y = "Vote Share in Election (%)")
+main_relationship_plot 
+# Facet the main relationship visualization by incumbency status
+main_relationship_plot_faceted <- dime_house_1014 |>
+  ggplot(mapping = aes(x = disbursement_pct_num,
+                       y = gen.elect.pct.num,
+                       color = Incum.Chall)) +
+  scale_color_manual("Incumbency Status", values = c("thistle", "sienna2", "goldenrod1")) +
+  facet_wrap(~ Incum.Chall, nrow = 2) + 
+  geom_point(alpha = .7) +
+  geom_smooth(se = FALSE, method = "loess", color = "black") + 
+  labs(title = "The Relationship between Spending Share and Vote Share",
+       subtitle = "U.S. House Candidates 2010-2014",
+       x = "Share of Total Disbursements in Election (%)",
+       y = "Vote Share in Election (%)")
+main_relationship_plot_faceted
+```
+
+Across all plots, the relationship between a candidate's share of total disbursements in an election and their vote share in that election appears to be positive and moderate in strength. The faceted plots that show the relationship within each incumbency status are helpful in determining the strength of this relationship across various types of candidates. For challenger candidates, the majority of data points are below 50% on both metrics, suggesting that in the majority of cases challengers do not gain a simple majority vote share nor do they spend a simple majority of total funds for all candidates in an election. The opposite seems to be true for incumbents with the majority of data points being above 50% thresholds for vote and spending shares. For open seat candidates, the data appears relatively even spread across all percentage shares of votes and disbursements, yet there still exists a positive relationship.
+
+```{r regression_model}
+# Multiple regression model for spending share, incumbency status on vote share, releveling open seat as baseline
+reg_vote_spend_share <- lm(gen.elect.pct.num ~ disbursement_pct_num + relevel(factor(Incum.Chall), 
+                                                                              ref = "Open Seat"), 
+                           data = dime_house_1014)
+# Rename rows in modelsummary table; could not use coef_rename because of quotes in relevel() function argument
+names(reg_vote_spend_share$coefficients) <- c('Intercept',
+                                              'Share of Total Disbursements in Election',
+                                              'Incumbency Status - Challenger',
+                                              'Incumbency Status - Incumbent')
+# Model Summary for multiple regression model 
+reg_vote_spend_share_table <- modelsummary::modelsummary(reg_vote_spend_share, stars = TRUE,
+                           statistic = c("s.e. = {std.error}",
+                                         "p = {p.value}"),
+                           note = "Outcome = Vote Share (%)",
+                           gof_map = c("nobs", "r.squared", "adj.r.squared"),
+                           title = "Linear Regression for the Effect of Spending Share on Vote Share")
+reg_vote_spend_share_table
+```
+In this multiple linear regression model, the intercept of approximately 26.7% represents the average percent vote share of a candidate in a general U.S. House of Representatives election whose spending makes up 0% of spending by all candidates in the election (essentially spending $0 on the campaign) and is competing in an open seat race.
+
+5.743 represents the average difference in vote share between Incumbents and Open Seat candidates, holding the spending share variable fixed. This coefficient holds a p-value of less than .001 and is extremely statistically significant. 
+
+-.287 represents the average difference in vote share between Challengers and Open Seat candidates, holding the spending share variable fixed. This coefficient holds a p-value of .743 and is not statistically significant. 
+
+**The main coefficient of interest:** On average, for a candidate's additional percentage increase in the share of total disbursements (by all candidates in an election), their vote share rises by about .378%, holding incumbency status fixed. This coefficient holds a p-value of less than .001, which is extremely statistically significant. To establish causality, we must determine that (1) the cause comes before the effect, (2) the relationship is not due to chance, and (3) there are no other confounding variables. The relationship meets the first condition because campaigns spend money leading up to the election, so vote share comes after spending. It has met the second condition through the p-test that determined extreme statistical significance. After controlling for incumbency status (which many believe to be the single greatest determinant for a candidate to win an election), the relationship meets the third condition. Therefore, we determine that spending share and vote share in U.S. House of Representatives general elections are causally linked: that a greater share of total disbursements by all candidates in a race results in a greater vote share in that election. 
+
+## Conclusion
+
+From the sample of 2,314 general election candidates for office in the United States House of Representatives from the years 2010 - 2014, I conclude that there exists a moderate, positive relationship between the percentage share a candidate has of total amount spent by all candidates in the same race and the candidate's percentage vote share. After the conditions of temporality, non-spurious nature, and minimal confounding, spending share and vote share are casually linked. A greater share of total spending in an election results in a greater vote share for that election. As such, the candidate that spends the most is generally the one that wins the most votes. This relationship accounted for incumbency status because it is widely considered to be the greatest determinant of whether a candidate wins an election or not. It was also notable to point out that incumbents generally had much greater spending shares than challenger candidates. Finally, this analysis supports my original hypothesis that the greater a candidate's percentage share of total campaign spending, the greater their percentage vote share in the general election. 
+
+Despite this, there are still many ways to improve this study of the relationship between spending share and vote share. For one, Bonica's variable total.disbursements (around which I built the study) reflects only the spending made by the candidates' campaigns themselves; in reality, there other sources of spending to promote a particular candidate's campaign. PACs spend their funds to promote a candidate though such spending is not included in the campaign finance report a candidate submits to the FEC. Data would be more accurate if it reflected spending for a candidate's campaign from all sources. In addition, the sample was limited to House races in the years 2010-2014; this could certainly be expanded to include the latter half of the 2010s to capture record highs of campaign funding and spending. It could also be useful to include Senate races or examine if this effect holds true for local and state campaigns. Lastly, the only covariate involved was incumbency status, but the ideal study would involve more confounding variables; one such variable could be a measure of dissonance between candidate's ideology and the average political ideology within the district. Controlling for more covariates would solidify the causal relationship between spending share and vote share. 
+
+While this study helps answer some positive questions surrounding campaign spending and political success, it opens up a number of normative concerns on the role that money plays in American democracy. As federal campaigns become more and more expensive, it seems to many that the threshold to become a candidate for United States political office is a financial one. Many worry that money holds greater weight on the political process than votes themselves. 
